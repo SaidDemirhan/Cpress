@@ -37,6 +37,7 @@ MY_CYPRESS_FRAMEWORK
     integration
           Testlerimizin bulundugu klosordur.
           tesleri kaydedecegimiz dosyanin adi com.techproed gibi olabilir.
+          bu klosörün icine yeni file ekliyoruz ve uzantisi mutlaka .js olmali (day01_login_testi.js)
     plugins
       index.js
           https://www.npmjs.com/ sitesinde bir cok yararli plugin bulunuyor.
