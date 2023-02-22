@@ -1,0 +1,27 @@
+öncelikle bilgisayarimizda vscode uygulamasi ve node.js programi kurulu olmalidir. nodejs.org
+
+masaüstünde bir dosya ac
+  ismi kücük harflerle 
+    my-cypress-framework
+    olabilir
+sürükleyerek VS ya birak
+
+new terminal ac
+npm init -y 
+yaz ve eneter a bas
+    "npm", "Node Package Manager" (Node Paket Yöneticisi) anlamına gelir.
+
+json dosyasi olustu
+
+cypress i yüklemek icin npm install --save-dev cypress 
+
+yükleme tamamlandiktan sonra terminalde Cypress in acilip acilmadigini görmek icin
+npx cypress open
+yazarak enter tusuna basalim
+    "npx", "Node Package Execute" (Node Paketini Çalıştır) anlamına gelir ve Node.js'in bir parçasıdır. 
+
+cpress in arayüzü gelmis olmasi lazim
+
+örnegi:
+calisip calismadigini denemek icin testler kismindaki integrationtests bölününden
+2. dosya olan 2-advanced-examples kismindaki ilk action.spec.js testine tiklanabilir.
