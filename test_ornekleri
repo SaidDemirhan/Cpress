@@ -13,6 +13,13 @@ describe('My First Cypress Test', () => {
       //sayfa title inda google kelimesinin oldugunu kontrol eder.
       "equal" yerine "eq" da kullanlabilir.
       
+    cy.get('#navLogon > .nav-link')
+      //locator belirleme
       
+    cy.contains("log in").click()
+      //eger sayfada bir tane log in geciyorsa onu bulur ve üzerine tiklar.
+      
+      
+    
   })
 })
