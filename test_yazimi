@@ -1,9 +1,35 @@
+describe('My First Cypress Test', () => {
+  it('Visits the homepage', () => {
+    cy.visit('https://www.example.com') // ziyaret edilecek URL adresi
+    cy.contains('Example Domain') // sayfada "Example Domain" metninin olup olmadığını kontrol eder
+    cy.url().should('include', 'example') // URL'de "example" ifadesinin yer aldığını kontrol eder
+  })
+})
+
+******************************************************************************************************
+
 describe("My First Test",() =>{
 })
 
-//Bu kod bloğu, test senaryosunun bir tanımıdır. 
-"describe" fonksiyonu, bir grup test senaryosu oluşturmanızı sağlar. 
+//"describe" fonksiyonu, bir grup test senaryosu oluşturmanızı sağlar. 
 Bu test senaryosu grubunun adı "My First Cypress Test" olarak tanımlandı.
 
 it('Visits the homepage', () => {
 })
+
+//"it" fonksiyonu, bir test senaryosu tanımıdır. 
+Bu blokta, test senaryosu açıklaması "Visits the homepage" olarak tanımlandı.
+
+    cy.visit('https://www.example.com') 
+
+//belirlenen adrese gider.
+
+    cy.contains('Example Domain') 
+    
+//sayfa icinde verilen metnin bulunup bulunmadigini sorgular
+
+    cy.url().should('include', 'example') 
+
+//"Cy.url" fonksiyonu, mevcut URL adresini alır. 
+"should" fonksiyonu ise, alınan URL'nin "include" fonksiyonuna verilen parametreyi içerip içermediğini kontrol eder. 
+Bu test senaryosunda, URL'nin "example" ifadesini içerip içermediği kontrol edilecek.
