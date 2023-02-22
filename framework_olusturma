@@ -22,7 +22,10 @@ yazarak enter tusuna basalim
 
 cpress in arayüzü gelmis olmasi lazim
 
-örnegi:
+***Eger gelmiyorsa manuel calistirmak icin cypress.io sayfasindan dosyayi indirip zip ten cikartip cy sembollu dosyayi aciyoruz
+onun icine de cypress proje klosorunu sürüklüyoruz ve istenilen testi oradan calistiriyoruz.
+
+örnegin:
 calisip calismadigini denemek icin testler kismindaki integrationtests bölününden
 2. dosya olan 2-advanced-examples kismindaki ilk action.spec.js testine tiklanabilir.
 
