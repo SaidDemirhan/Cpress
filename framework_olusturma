@@ -55,4 +55,5 @@ MY_CYPRESS_FRAMEWORK
             "cromeWebSecurity": false
           yazarsak güvenli olmayan siteye veya bir iframe de erisebiliriz.
   package-lock.json
+          Dependency lerin yüklü oldugu dosyalar
   package.json
