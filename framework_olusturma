@@ -25,3 +25,34 @@ cpress in arayüzü gelmis olmasi lazim
 örnegi:
 calisip calismadigini denemek icin testler kismindaki integrationtests bölününden
 2. dosya olan 2-advanced-examples kismindaki ilk action.spec.js testine tiklanabilir.
+
+Artik kolayca testlerimizi olusturabiliriz.
+
+Dosya yapisi olarak:
+MY_CYPRESS_FRAMEWORK
+  cypress
+    fixtures
+      example.json
+          Her zaman kullanilabilecek olan sifre email vs gibi verileri depolariz ve istendiginde kullaniriz.
+    integration
+          Testlerimizin bulundugu klosordur.
+          tesleri kaydedecegimiz dosyanin adi com.techproed gibi olabilir.
+    plugins
+      index.js
+          https://www.npmjs.com/ sitesinde bir cok yararli plugin bulunuyor.
+          Örneğin, raporlama eklentileri kullanarak, test sonuçlarını daha anlaşılır bir şekilde sunabilirsiniz. 
+    support
+      commands.js
+          icerigindeki adrese gidilirse her tür test kodunun nasil yazilacagi örneklerle yazilmis.
+      index.js
+  node_Modules
+          Cypress in kullandigi arayuzun iceriginin oldugu bolum.
+  cypress.json
+          tüm yapilandirma ayarlarini buraya kaydedebiliyoruz.
+          mesela standart bekleme süresini 
+            "defaultCommandTimeout": 4000,
+          yazarak 4 saniyeye cikarabiliriz. veya
+            "cromeWebSecurity": false
+          yazarsak güvenli olmayan siteye veya bir iframe de erisebiliriz.
+  package-lock.json
+  package.json
