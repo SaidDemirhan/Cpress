@@ -1,0 +1,9 @@
+describe("My First Test",() =>{
+})
+
+//Bu kod bloğu, test senaryosunun bir tanımıdır. 
+"describe" fonksiyonu, bir grup test senaryosu oluşturmanızı sağlar. 
+Bu test senaryosu grubunun adı "My First Cypress Test" olarak tanımlandı.
+
+it('Visits the homepage', () => {
+})
