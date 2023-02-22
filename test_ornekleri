@@ -1,0 +1,18 @@
+describe('My First Cypress Test', () => {
+  it('Visits the homepage', () => {
+    cy.visit('https://www.example.com') 
+      // ziyaret edilecek URL adresine gider
+      
+    cy.contains('Example Domain') 
+      // sayfada "Example Domain" metninin olup olmadığını kontrol eder
+      
+    cy.url().should('include', 'example') 
+      // URL'de "example" ifadesinin yer aldığını kontrol eder
+      
+    cy.title().should("equal", "google")
+      //sayfa title inda google kelimesinin oldugunu kontrol eder.
+      "equal" yerine "eq" da kullanlabilir.
+      
+      
+  })
+})
