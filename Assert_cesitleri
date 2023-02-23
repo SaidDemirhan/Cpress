@@ -1,0 +1,144 @@
+Assert_cesitleri
+
+1 .should('exist'): Belirtilen seçiciye sahip bir HTML öğesi varsa başarılı bir şekilde geçer.
+
+cy.get('#myElement').should('exist');
+cy.get('#myElement').should('not.exist');
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin varlığını kontrol eder.
+
+**********************
+
+2 .should('be.visible'): Belirtilen seçiciye sahip bir HTML öğesi görünürse başarılı 
+bir şekilde geçer.
+
+cy.get('#myElement').should('be.visible');
+cy.get('#myElement').should('not.be.visible');
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin görünür 
+  olup olmadığını kontrol eder.
+
+**********************
+
+3 .should('have.text', 'metin'): Belirtilen seçiciye sahip bir HTML öğesinin metni 
+belirtilen metinle eşleşirse başarılı bir şekilde geçer.
+*metin eksiksiz ve bire bir ayni olmalidir.
+
+cy.get('#myElement').should('have.text', 'Merhaba Dünya!');
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin metninin "Merhaba Dünya!" 
+  olup olmadığını kontrol eder.
+
+**********************
+
+4 .should('contain', 'metin'): Belirtilen seçiciye sahip bir HTML öğesinin metni belirtilen 
+metini içeriyorsa başarılı bir şekilde geçer.
+* metnin tamamini icermek zorunda degildir.
+
+cy.get('#myElement').should('contain', 'Dünya');
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin metninin "Dünya" kelimesini içerip 
+  içermediğini kontrol eder.
+
+**********************
+
+5 .should('have.attr', 'attributeName', 'attributeValue'): Belirtilen seçiciye sahip bir HTML
+öğesinin belirtilen özniteliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
+
+cy.get('#myElement').should('have.attr', 'data-id', '12345');
+cy.get('#myElement').should('not.have.attr', 'disabled', 'disabled');
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "data-id" özniteliğinin değerinin 
+  "12345" olduğunu kontrol eder.
+
+**********************
+
+6 .should('have.class', 'className'): Belirtilen seçiciye sahip bir HTML öğesinin belirtilen
+sınıfı içeriyorsa başarılı bir şekilde geçer.
+
+cy.get('#myElement').should('have.class', 'active');
+cy.get('#myElement').should('not.have.class', 'hidden');
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "active" adlı sınıfı içerip 
+  içermediğini kontrol eder.
+  
+**********************
+
+7 .should('have.css', 'property', 'value'): Belirtilen seçiciye sahip bir HTML öğesinin 
+belirtilen CSS özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
+
+cy.get('#myElement').should('have.css', 'color', 'red');
+cy.get('#myElement').should('not.have.css', 'background-color', 'blue');
+
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "color" CSS özelliğinin 
+  "red" olduğunu kontrol eder.
+  
+**********************  
+8. .should('have.value', 'value'): Belirtilen seçiciye sahip bir form öğesinin değeri 
+belirtilen değerle eşleşirse başarılı bir şekilde geçer.
+  
+  cy.get('#myInput').should('have.value', 'John Doe');
+
+**********************
+9 .should('have.length', length): Belirtilen seçiciye sahip öğelerin sayısı belirtilen 
+uzunlukla eşleşirse başarılı bir şekilde geçer.
+
+  cy.get('.list-item').should('have.length', 5);
+
+**********************
+10 .should('match', pattern): Belirtilen seçiciye sahip bir öğenin yol ve özelligi, 
+belirtilen düzenli ifade örüntüsüyle eşleşirse başarılı bir şekilde geçer.
+*yani linin altinda navLogon id i + nav-item ve active class i
+  *her öellik yazilmak zorunda degil.
+
+  cy.get('#myElement').should('match', "li#navLogon.nav-item.active");
+
+**********************
+11 .should('have.descendants', selector): Belirtilen seçiciye sahip bir öğenin belirtilen
+alt öğelere sahip olması durumunda başarılı bir şekilde geçer.
+
+  cy.get('#myList').should('have.descendants', '.list-item');
+
+**********************
+12 .should('have.prop', 'propertyName', 'value'): Belirtilen seçiciye sahip bir öğenin 
+belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
+
+  cy.get('#myCheckbox').should('have.prop', 'checked', true);
+
+**********************
+------------------------------------------------------
+Örnek bir test:
+
+
+describe("Cristal Key", () => {
+  it("Test-1", () => {
+    cy.visit("https://qa-environment.koalaresorthotels.com/");
+    cy.contains("Log in").click();
+    cy.url().should("include", "Account/Logon");
+    //url de "Account/Logon" var mi?
+    cy.get("#ftco-navbar").should("exist");
+    // "ftco-navbar" id e sahip bir element var mi?
+    cy.get("#ftco-navbar").should("be.visible");
+    //bu id e sahip bir element görünüyor mu?
+    cy.get("#navLogon").should("have.text", "Log in");
+    //bu id e sahip elementin tam metni yazilmalidir.
+    cy.get("#navLogon").should("contain", "Log i");
+    //metnin icerisinde geciyor mu?
+    cy.get("#navLogon").should("have.attr", "class", "nav-item active");
+    //bu id e sahip olan bir elementin key ve value su dogru mu?
+    cy.get("#navLogon").should("have.class", "active");
+    //bu id e sahip olan eleentin class olarak belirtilen ozelligi var mi?
+    cy.get("#navLogon").should("not.have.css", "color", "red");
+    //bu id e sahip elementte denilen css özelliginin olmadigini kanitlar.
+    cy.get("#btnSubmit").should("have.value", "Log in");
+    //bu id e sahip elementin value degeri dogru mu?
+    cy.get(".form-group").should("have.length", 3);
+    //bu class a sahip 3 adet element var mi?#
+    cy.get("#navLogon").should("match", "li#navLogon.nav-item.active");
+    //bu id e sahip elementin yolu ve özelligi eslesiyor mu?
+    cy.get(".sidebar-box").should("have.descendants", ".categories");
+    //bu class a sahip elementin altindaki elemenlerde belirtilen class li bir element var mi?
+    cy.get(".navbar-toggler").should("have.prop", "type", "button");
+    //bu class a sahip olan elementteki ilgili property dogru mu?
+  });
+});
