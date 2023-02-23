@@ -19,7 +19,9 @@ describe('My First Cypress Test', () => {
     cy.contains("log in").click()
       //eger sayfada bir tane log in geciyorsa onu bulur ve üzerine tiklar.
       
-      
+    //username: "manager"
+    cy.get('#UserName').type("manager") 
+        //bir text kutusuna yazi yazar
     
   })
 })
