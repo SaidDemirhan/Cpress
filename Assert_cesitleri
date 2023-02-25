@@ -105,7 +105,7 @@ belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şeki
 
   cy.get('#myCheckbox').should('have.prop', 'checked', true);
 
-**********************
+
 ------------------------------------------------------
 Örnek bir test:
 
