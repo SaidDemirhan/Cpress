@@ -35,6 +35,7 @@ metini içeriyorsa başarılı bir şekilde geçer.
 * metnin tamamini icermek zorunda degildir.
 
 cy.get('#myElement').should('contain', 'Dünya');
+cy.get('#myElement').should('include', 'Dünya');
 
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin metninin "Dünya" kelimesini içerip 
   içermediğini kontrol eder.
