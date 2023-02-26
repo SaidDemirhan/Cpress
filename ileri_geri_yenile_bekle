@@ -1,0 +1,17 @@
+describe("Navigation", () => {
+  it("back, forward, refresh", () => {
+    cy.visit("https://qa-environment.koalaresorthotels.com/");
+    cy.contains("Log in").click();
+
+    //önceki sayfaya ileri geri gelme bekleme
+    cy.go("back"); //geri gider
+    cy.wait(2000); //2 saniye bekler
+    cy.go(1); //ileri gitme
+    cy.wait(2000);
+    cy.go(-1); //geri gider
+    cy.wait(2000);
+    cy.go("forward"); //ileri gider
+    cy.wait(2000);
+    cy.reload(); //yeniden yükler
+  });
+});
