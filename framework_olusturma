@@ -25,6 +25,12 @@ cpress in arayüzü gelmis olmasi lazim
 ***Eger gelmiyorsa manuel calistirmak icin cypress.io sayfasindan dosyayi indirip zip ten cikartip cy sembollu dosyayi aciyoruz
 onun icine de cypress proje klosorunu sürüklüyoruz ve istenilen testi oradan calistiriyoruz.
 
+    Eger Framework taki tüm testleri calistirmak istersek:
+
+    "npx cypress run"
+
+    yazarak tüm hepsini calistirmis oluruz.
+
 örnegin:
 calisip calismadigini denemek icin testler kismindaki integrationtests bölününden
 2. dosya olan 2-advanced-examples kismindaki ilk action.spec.js testine tiklanabilir.
