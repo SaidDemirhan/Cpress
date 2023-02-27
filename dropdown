@@ -1,0 +1,8 @@
+describe("dropdown",()=>{
+    it("dropdown test",()=>{
+        cy.visit("https://the-internet.herokuapp.com/dropdown")
+        cy.get('#dropdown')
+        .select("Option 2") //secenekte ne zaziyorsa onu yaz
+        .should("have.value",2) //2. siradakinin secilip secilmedigini kontrol eder.
+    })
+})
