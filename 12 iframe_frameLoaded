@@ -1,0 +1,23 @@
+//öncelikle islevin calisabilmesi icin kütüphane ekliyoruz
+
+//npm install -D cypress-iframe
+
+//ayrica kod satirina da 
+
+import "cypress-iframe" //yazarak kütüphaneyi burda aktif etmeliyiz.
+//commnd.js dosyyasina da kaydedilebilirdi.
+
+describe("iframe",()=>{
+    it("iframe",()=>{
+        cy.visit("https://the-internet.herokuapp.com/iframe")
+        
+        cy.get('h3').should("contain","Editor")
+
+        cy.frameLoaded("#mce_0_ifr")
+        
+        cy.iframe().find("p").clear()   //.click().clear().wait(1000) yazilip type ile devam da edilebilir.
+        
+        cy.iframe().type("nasilsin?")
+        
+    })
+})
