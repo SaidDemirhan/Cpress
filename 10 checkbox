@@ -1,0 +1,10 @@
+describe("checkboxes",()=>{
+    it("checking single box",()=>{
+        cy.visit("https://webflow.com/made-in-webflow/website/CMS-Checkbox-Custom-Name")
+        cy.get("#sorry",{force:true})
+        .first()
+        .should("not.be.checked")   //isaretili olmadigini test eder
+
+        .should("be.checked")   //isaretli oldugunu test eder
+    })
+})
