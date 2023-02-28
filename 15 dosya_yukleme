@@ -1,0 +1,70 @@
+//Dosya yüklemek icin:
+
+//* npm install --save-dev cypress-file-upload
+
+//komutunu terminale yazarak yüklüyoruz.
+
+//import etmeliyiz tabi
+
+import "cypress-file-upload"    //bunu command.js dosyasina da ekleyebilirdik.
+
+describe("dosya yukleme",()=>{
+    it("tek dosya yükleme",()=>{
+        cy.visit("internet adresi")
+        cy.get("dosyaSecButonu").attachFile("yüklemek istedigimiz dosyanin yolu")
+
+        //ikinci yol
+
+        const path1="dosyamizin adi ve uzantisi"
+        cy.get("dosyaSecButonu").attachFile(path1)
+
+        //yüklendigini kontrol etmek icin
+
+        cy.get('#locate').should("include.text","resmin_adi")
+        cy.contains("resmin_adi").should("be.visible")
+
+    })
+
+    ////////////////////////////////////////////////////////////////////////
+
+    it("cok dosya yukleme",()=>{
+        cy.visit("yükleme yapilacak internet adresi")
+
+        const path1="resim1.jpeg"
+        const path2="resim2.jpeg"
+        const path3="resim3.jpeg"
+
+        cy.get("dosyaSecButonu")
+        .attachFile(path1).wait(2000)
+        .attachFile(path2).wait(2000)
+        .attachFile(path3).wait(2000)
+
+        //veya
+
+        cy.get("dosyaSecButonu")
+        .attachFile([path1,path2,path3])
+
+        //diger yol
+
+        cy.get("dosyaSecButonu")
+        .attachFile(["resim1.jpeg","resim2.jpeg","resim3.jpeg"])
+        //liste halinde yazarsak da ekletebiliriz.
+    })
+
+    //////////////////////////////////////////////////////////////////////
+
+    //yüklenecek bir dosyayi yüklendigi yerdeki adini degistirmek istiyorsak
+
+    it("override file name",()=>{
+        cy.visit("yükleme yapilacak internet adresi")
+
+        const path1="resim1.jpeg"
+
+        cy.get("dosyaSecButonu")
+        .attachFile({filePath:path1,fileName:"favori_resmim"})
+
+        //adinin degistigini test edersek
+
+        cy.contains("favori_resmim").should("be.visible")
+    })
+})
