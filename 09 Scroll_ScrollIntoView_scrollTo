@@ -1,0 +1,20 @@
+describe("scroll", () => {
+  it("scroll into view", () => {
+    cy.visit("https://qa-environment.koalaresorthotels.com/").wait(3000);
+    cy.get(".col-md-7 > .mb-4").scrollIntoView().wait(2000);
+    cy.get(
+      ":nth-child(9) > .container > .justify-content-center > .col-md-7 > h2"
+    ).scrollIntoView();
+
+    //locate i alinan yere dogru sayfa asagiya iner.
+
+    cy.scrollTo("bottom") //sayfa en alta iner
+      .wait(2000);
+    cy.scrollTo("top") //sayfa en üste gider
+      .wait(2000);
+    cy.scrollTo(0, 1000) //1000 pixel asagiya iner.(koordinat sistemi gibi.)
+      .wait(2000);
+    cy.scrollTo(0, -500); //500 pixel yukariya cikar.
+
+  });
+});
