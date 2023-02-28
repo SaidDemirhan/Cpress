@@ -1,0 +1,27 @@
+//command.js dosyasina her yerden ulasilabildigi icin burayi useable class gibi kullaniyoruz
+
+//bir method ekleyelim..
+
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("url_adresi");
+  cy.get("#login").click();
+  cy.get("#eMail").type(email);
+  cy.get("#password").type(password);
+  cy.get("#ok").click();
+});
+
+//Artik giris icin uzun uzun diger yerlerde bunu yazmaya gerek kalmadi.
+//burdan login i cagirabiliriz.
+
+
+****************************************************************************************
+
+describe("command dosyasindan login alma",()=>{
+    it("login cagirma",()=>{
+        cy.login("xyz@gmail.com","12345")
+
+        //istersek girdigimize dair ekran resmi de cekebilir
+
+        cy.screenshot() //ilgili klosörde saklayacaktir.
+    })
+})
