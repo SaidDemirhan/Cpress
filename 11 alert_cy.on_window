@@ -12,6 +12,8 @@ describe("alert", () => {
     cy.get("#result").should("have.text", "You successfully clicked an alert");
   });
 
+
+
   it("accept alert test", () => {
     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
     cy.get(":nth-child(2) > button").click();
@@ -25,14 +27,19 @@ describe("alert", () => {
     cy.get("#result").should("have.text", "You clicked: Ok");
   });
 
-  it("prompt", () => {
-    cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
-    cy.get(':nth-child(3) > button').click()
+//bir prompt penceresi cikiyor ise
 
-    cy.on("window:....", ()=>{
-        return ok
+  it.only("prompt", () => {
+    cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
+    
+
+    cy.window()
+    .then(("$windowElement"), ()=>{
+        cy.stub($windowElement,"prompt").returns("Hi!")   //$windowsElement windows penceresine bilgi girisi
+        cy.wait(4000)
+        cy.get(':nth-child(3) > button').click()
     })
 
-    cy.get("#result").should("have.text", "You entered:");
+    cy.get("#result").should("have.text", "You entered: Hi!");
   });
 });
