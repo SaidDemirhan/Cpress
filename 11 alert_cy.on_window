@@ -17,6 +17,8 @@ describe("alert", () => {
       expect(str).to.equal("uyari yazisinin tamami");
       expect(str).to.eq("uyari yazisinin tamami");
       expect(str).to.contains("uyari yazisinin tamami");
+
+      //Sayfada degiliz, penceredeyiz o yüzden should u kullanamiyoruz.
     });
   });
 
