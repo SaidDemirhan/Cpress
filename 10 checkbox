@@ -6,5 +6,9 @@ describe("checkboxes",()=>{
         .should("not.be.checked")   //isaretili olmadigini test eder
 
         .should("be.checked")   //isaretli oldugunu test eder
+
+        cy.get("#sorry").uncheck()  //tiklamayi kaldirir
+        cy.get("#sorry").check()  //tiklama isareti koyar
     })
 })
+
