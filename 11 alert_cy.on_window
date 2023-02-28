@@ -3,42 +3,50 @@ describe("alert", () => {
     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
     cy.get(":nth-child(1) > button").click();
 
-//tamam denilmesi gerek pencereler icin
+    //tamam denilmesi gerek pencereler icin
 
-    cy.on("window:ok",()=>{
-        return ok
-    })
+    cy.on("window:ok", () => {
+      return ok;
+    });
 
     cy.get("#result").should("have.text", "You successfully clicked an alert");
+
+    //eger acilan uyari penceresindeki bir yaziyi dogrulamak istersek:
+
+    cy.on("window:alert", (str) => {
+      expect(str).to.equal("uyari yazisinin tamami");
+      expect(str).to.eq("uyari yazisinin tamami");
+      expect(str).to.contains("uyari yazisinin tamami");
+    });
   });
 
-
+  ///////////////////////////////////////////////////////////////////
 
   it("accept alert test", () => {
     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
     cy.get(":nth-child(2) > button").click();
 
-    cy.on("window:confirm", (str)=>{
-        return true
-    })
+    cy.on("window:confirm", (str) => {
+      return true;
+    });
 
-//evet veya hayir denilmesi gereken pencereler icin. (yanlis icin return false)
+    //evet veya hayir denilmesi gereken pencereler icin. (yanlis icin return false)
 
     cy.get("#result").should("have.text", "You clicked: Ok");
   });
 
-//bir prompt penceresi cikiyor ise
+  ///////////////////////////////////////////////////////////////
 
-  it.only("prompt", () => {
+  //bir prompt penceresi cikiyor ise
+
+  it("prompt", () => {
     cy.visit("https://the-internet.herokuapp.com/javascript_alerts");
-    
 
-    cy.window()
-    .then(("$windowElement"), ()=>{
-        cy.stub($windowElement,"prompt").returns("Hi!")   //$windowsElement windows penceresine bilgi girisi
-        cy.wait(4000)
-        cy.get(':nth-child(3) > button').click()
-    })
+    cy.window().then("$windowElement", () => {
+      cy.stub($windowElement, "prompt").returns("Hi!"); //$windowsElement windows penceresine bilgi girisi
+      cy.wait(4000);
+      cy.get(":nth-child(3) > button").click();
+    });
 
     cy.get("#result").should("have.text", "You entered: Hi!");
   });
