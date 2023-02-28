@@ -1,0 +1,20 @@
+describe("login", () => {
+  const eMail = "qwertzu@gmail.com";
+  const pass = "12345";
+
+  it("login negatif", () => {
+    cy.visit("http://ozmerozelegitim.com/").wait(1000);
+    cy.get(".burger_icon").click().wait(1000);
+    cy.get("#mCSB_2_container > :nth-child(2) > a").click().wait(1000);
+    cy.get("#user").type(eMail).wait(1000);
+    cy.get("#pass").type(pass).wait(1000);
+    cy.get("#gonder").click();
+    cy.url().should("equal","http://obs.ozmerozelegitim.com/login.html")
+    //eger yanlis giris yazisi ciksaydi;
+    //cy.get("#fail").should("include.text","yanlis giris")
+
+
+    //have.text sayfadaki bir metni arar
+    //url() ise include olarak aranir!!!
+  });
+});
