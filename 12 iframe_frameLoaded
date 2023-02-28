@@ -2,22 +2,27 @@
 
 //npm install -D cypress-iframe
 
-//ayrica kod satirina da 
+//ayrica kod satirina da
 
-import "cypress-iframe" //yazarak kütüphaneyi burda aktif etmeliyiz.
+import "cypress-iframe"; //yazarak kütüphaneyi burda aktif etmeliyiz.
 //commnd.js dosyyasina da kaydedilebilirdi.
 
-describe("iframe",()=>{
-    it("iframe",()=>{
-        cy.visit("https://the-internet.herokuapp.com/iframe")
-        
-        cy.get('h3').should("contain","Editor")
+describe("iframe", () => {
+  it("iframe", () => {
+    cy.visit("https://the-internet.herokuapp.com/iframe");
 
-        cy.frameLoaded("#mce_0_ifr")
-        
-        cy.iframe().find("p").clear()   //.click().clear().wait(1000) yazilip type ile devam da edilebilir.
-        
-        cy.iframe().type("nasilsin?")
-        
-    })
-})
+    cy.get("h3").should("contain", "Editor");
+
+    cy.frameLoaded("#mce_0_ifr");
+
+    //bunu selenium da yapmak isteseydir
+    //driver.switchto.frame("#mce_0_ifr")
+
+    cy.iframe().find("p").clear(); //.click().clear().wait(1000) yazilip type ile devam da edilebilir.
+
+    cy.iframe().type("nasilsin?");
+
+    //i frame ait olmayan kisimlari cikmadan da locate edebiliriz. Seleniumdan farki
+
+});
+});
