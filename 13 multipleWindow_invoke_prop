@@ -1,0 +1,35 @@
+//invoke
+
+//prop
+
+describe("multiple window",()=>{
+    it("removing target",()=>{
+        cy.visit("https://the-internet.herokuapp.com/windows")
+        
+        //farkli sayfaya gidilen yerin locate ini aldik
+
+        cy.get('.example > a').invoke("removeAttr","target").click()
+
+        //target tagini kaldirararak ayni pencerede acilmasini sagladik
+        //yoksa test etmeye devam edemazdik.
+
+        cy.get('h3').should("have.text","New Window")
+    })
+
+//ikinci yol olarak fonksiyon tanimlayabiliriz.
+
+    it("yeni url de acma",()=>{
+        cy.visit("https://the-internet.herokuapp.com/windows")
+
+        cy.wait(2000)
+
+        cy
+        .get('.example > a')
+        .then((element)=>{
+            const newUrl=element.prop("href")
+            cy.visit(newUrl)
+        })
+
+        cy.get('h3').should("have.text","New Window")
+    })
+})
