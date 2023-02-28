@@ -1,14 +1,31 @@
-describe("checkboxes",()=>{
-    it("checking single box",()=>{
-        cy.visit("https://webflow.com/made-in-webflow/website/CMS-Checkbox-Custom-Name")
-        cy.get("#sorry",{force:true})
-        .first()
-        .should("not.be.checked")   //isaretili olmadigini test eder
+describe("checkboxes", () => {
+  it("checking single box", () => {
+    cy.visit(
+      "https://webflow.com/made-in-webflow/website/CMS-Checkbox-Custom-Name"
+    );
+    cy.get("#sorry", { force: true })
+      .first()
+      .should("not.be.checked") //isaretili olmadigini test eder
 
-        .should("be.checked")   //isaretli oldugunu test eder
+      .should("be.checked"); //isaretli oldugunu test eder
 
-        cy.get("#sorry").uncheck()  //tiklamayi kaldirir
-        cy.get("#sorry").check()  //tiklama isareti koyar
-    })
-})
+    cy.get("#sorry").uncheck(); //tiklamayi kaldirir
+    cy.get("#sorry").check(); //tiklama isareti koyar
+  });
 
+  //eger tüm checkbox lari tiklamak istiyorsak parent olan input unu secmek gerekiyor.
+
+  //eger birden fazla tik i click() ile yapmak istersek 
+
+  //click({multiple: true})
+
+  //yazarak halledebiliriz.
+
+  //Normalde isaretli olmayan bir box icin parent elementinde "checked" yazmaz 
+  //ama tiklandiginda artik class="checked" yasisi görünür.
+
+  cy.get("#sorry").parent().should("have.class","checked")  //seklinde kontrol edilebilir.
+
+  //Eger birden fazla class varsa ilkini secmek icin .first() kullanilir.
+
+});
