@@ -1,0 +1,23 @@
+https://mochajs.org/
+
+Cypress framework olarak mocha yi kullanir
+
+Node.js ve browser da calisan javaScript test framework udur.
+
+bazi exrta kodlar
+  describe()  test class olusturur
+  
+  it()  single test case olusturur
+  
+  before()  tüm testlerden önce calisir (beforeclass in testNG)
+  
+  after()   tüm testlerden sonra calisir (afterclass in testNG)
+  
+  befofeEach()  test blogundaki her testten önce calisir. (before method in testNG)
+  
+  afterEach() test blogundaki her testten sonra calisir. (after method in testNG)
+  
+  it().skip()   testi calistirmadan gecer
+  
+  it().only()   sadece o testi calistirir.
+  
