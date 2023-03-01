@@ -1,0 +1,35 @@
+cypress frameworkundaki fixtures dosyasina acilan "creds.json" adindaki bir dosyadir
+kullanici bilgilerini saklamak icin kullanilir.
+
+{
+    "username": "user",
+    "password": "12345"
+}
+
+Saklanan bilgiye ulasmak icin .js test dosyamizda;
+
+describe("amazon", () => {
+  before(function () {
+    cy.fixture("creds").then((data) => {
+      this.data = data;
+    });
+  });
+
+  it("amazon giris", () => {
+    cy.visit("https://www.amazon.com");
+    cy.get("#nav-link-accountList").trigger("mouseover");
+    cy.get(
+      "#nav-flyout-ya-signin > .nav-action-button > .nav-action-inner"
+    ).click();
+    cy.get('#ap_email').type(this.data.username);
+    
+     //kullanici adini dogrulamak istersek;
+    cy.get('#ap_email').should("have.attr","value", this.data.username)   //.and("contain.text","xxxx") gibi should olarak devam edebilir.
+    
+    cy.get("#password").type(this.data.password);
+  });
+});
+
+
+kodunu yazarak ulasmis oluyoruz
+
