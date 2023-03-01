@@ -1,0 +1,53 @@
+-Cypress testlerimizi Cypress runner arayüzünden calistirabiliriz.
+-cesitli browser larda test edebiliriz.
+-default olarak kullandigi browser adi Electron
+
+-IDE mizin terminalinden de testlerimizi caslistirabiliyoruz
+
+  "npx cypress run"
+
+-cok degisik calistirma yöntemlerini bu siteden bulabiliriz.
+
+https://docs.cypress.io/guides/guides/command-line
+
+-framework umuzdaki node_modules dosyasindaki .bin klosorundeki cypress dosyamizdan 
+terminal acarak tüm testlerimizi asagidaki komut ile calistirabiliriz.
+
+  "./node_modules/.bin/cypress run"
+  
+ancak cypress.json dosyasinda mutlaka;
+  
+  {
+    "chromeWebSecurity": false
+  }
+  
+kodunun  yazili olmasi gerekmektedir.  
+
+-hata verdiginde ekran resmi ceker ve tüm testlerin videosunu ceker.
+
+-tek testi calistirmak icin
+
+./node_modules/.bin/cypress ru --spec dosyanin path i
+
+*istenilen testin path ini almak icin frameworktaki test üzerinde sag tus yapilabilir.
+cypress kismi ve sonrasini yapistirmak yeterli olur.
+
+bu sekilde test arka planda Electron da yapilip tamamlanacaktir.
+
+Eger biz bir browser da yapsin isteseydik sonuna 
+    --headed 
+eklemeliyiz. testten sonra da kendiisi browser i kapatir. video+ekran resmi de alir.
+
+-paket olarak bir klosoru calistirmak istersek;
+
+path olarak klosörün yolunu almak yeterlidir.
+
+-eger tüm kodun sonuna
+
+  --browser firefox
+  
+yazilirsa o browserda test etmis olur  
+
+
+***************************************************************************
+
