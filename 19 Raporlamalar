@@ -1,0 +1,80 @@
+https://cloud.cypress.io/login
+
+bu siteye kaydoluyoruz.
+
+cypress.json dosyasina projectID:xxxxx kismini ekliyoruz. her proje olusturmada yapistirmaliyiz.
+
+sonrasinda verilen talimatlarla terminalden gerekli kou girerek hem lokalde hem de cloudda testlerimiz calisiyor
+
+./node_modules/.bin/cypress run --spec  (dosya veya test yolu, cypress kismindan öncesini alma+)
+--record --key (proje klosörunun icinde proje ayarlarinin icindek record key)
+
+eger bastan sona tüm testlerin yapilmasini istersek;
+
+npx cypress run --record --key xxxxxxxxxxxxxxxxxxx
+
+daha fazla ayrinti icin 
+
+https://www.youtube.com/watch?v=5ZrMGg6SZMw&list=PLeZr8VTNC1oYE1HoJdyV1IY_y-2aNfTM6&index=9&t=11s
+9.cypress videosuna bakabilirsiniz.
+
+
+////////////////////////////////////////////////////////////////////////////
+
+ayrica
+
+3 farkli raporlama cesiti mevcut
+
+1.
+npm install --save-dev mochawesome
+
+https://www.npmjs.com/package/mochawesome adresinde ayrintilar mevcut
+
+2.
+npm install mochawesome-merge --save-dev
+
+https://www.npmjs.com/package/mochawesome-merge adresinde ayrintilar mevcut
+
+3. raporlari birlestirip okunakli bir halde bize sunuyor
+npm install -g mochawesome-report-generator
+
+https://www.npmjs.com/package/mochawesome-report-generator adresinde ayrintilar mevcut
+
+egerverilen kodlarda hata msji alinirsa sitede iki farkli kod var (sag üst kösedeki denenebilir)
+"npm i mochawesome-report-generator" gibi
+
+****son olarak:
+
+cypress.json dosyasina asagidaki kodu {icine} eklemeyi unutma!
+
+"reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/reports",
+    "reportFilename": "report",
+    "owerwrite": false,
+    "html": true,
+    "json": true,
+    "charts": true
+  },
+  "video": false
+  
+artik bir test calistirdigimizda raporlama klosü olacak ve orada bir html dosyasi da olmus olacak
+
+genel raporlama icin de;
+
+  "merge": "mochawesome-merge cypress/reports/*.json >cypress/reports/output.json",
+  "generate_mochawesome_report": "marge cypress/reports/output.json --reportDir ./ --inline"
+  
+kodunu cypress.json dosyasina bir virgul atarak scripts icine yapistiriyoruz.
+
+Artik tüm ayrintilari görsel sekilde raporda görebiliriz.
+
+görebilmek icin terminale;
+
+  npm run merge   enter a bas
+  npm run generate_mochawesome_report
+  
+  yazip enter a basinca karsimiza output.html dosyasini actigimizda cikacaktir.
+  
+
+
