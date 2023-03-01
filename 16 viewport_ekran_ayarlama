@@ -1,0 +1,11 @@
+//ekrani istedigimiz ölculerde ayarlamamizi sagliyor
+
+describe("Viewports", () => {
+  it("iphone8", () => {
+    cy.visit("https://www.amazon.com");
+    cy.viewport("iphone-8") //cypress taki yüklü modellerden secebiliriz.
+      //cy.screenshot() //fotosunu alabiliriz.
+      .wait(3000);
+    cy.viewport(2500, 1500); //seklinde kendimiz de ayarlayabiliyoruz.
+  });
+});
