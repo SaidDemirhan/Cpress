@@ -21,3 +21,32 @@ bazi exrta kodlar
   
   it().only()   sadece o testi calistirir.
   
+/////////////////////////////////////////////////////////////////////////////////////////
+
+describe("hooks",()=>{
+
+before(()=>{
+    console.log("before method")
+})
+
+beforeEach(()=>{
+    console.log("beforeEach method")
+    cy.visit("https://www.amazon.com")
+})
+
+after(()=>{
+    console.log("after Method")
+})
+
+afterEach(()=>{
+    console.log("AfterEach method")
+    cy.url().should("include","amazon")
+})
+
+    it("test1",()=>{
+        cy.get('#nav-link-accountList').trigger("mouseover")
+        cy.get('#nav-flyout-ya-signin > .nav-action-button > .nav-action-inner').click()
+        
+
+    })
+})
