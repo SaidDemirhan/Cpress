@@ -1,0 +1,12 @@
+Integration dosyamizin icine "PageObjectRepository" adinda bir klosör olusturuyoruz.
+
+icine iki test klasi olusturuyoruz
+
+"homePage" ve "loginPage"
+
+bu dosyalarin ilk satirina class oldugunu belirtmek icin:
+
+class Homepage{}
+class Loginpage {} 
+
+yaziyoruz.
