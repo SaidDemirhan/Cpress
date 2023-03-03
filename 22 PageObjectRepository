@@ -4,10 +4,72 @@ icine iki test klasi olusturuyoruz
 
 "homePage" ve "loginPage"
 
-bu dosyalarin ilk satirina class oldugunu belirtmek icin:
+bu dosyalarin ilk satirina class oldugunu belirtmek icin en üst satirlarina:
 
 class Homepage{}
 class Loginpage {} 
 
 
 yaziyoruz.
+
+Eger klass sonuna export ifadesi yazmazsak calismaz!!!
+
+Bu klass larin icine yazdigimiz kodlara 
+
+POM.js dosyamizdan import ederek ve obje olusturarak ulasacagiz.
+
+AYRINTILARI ASAGIDADIR.
+
+
+///////////////////////////////////////////////////
+
+
+//Pom dan import yöntemiyle cagrilacak
+
+//her sayfa icin ayri bir page olusturulabilir.
+
+class HomePage{
+    getSigninLink(){
+        return cy.contains("Sign In")
+    }
+}
+
+export default HomePage
+
+///////////////////////////////////////////////////
+
+//Pom dan import yöntemiyle cagrilacak
+
+//her sayfa icin ayri bir page olusturulabilir.
+
+class LoginPage{
+    getUserNameBox(){
+        cy.get("#Username")
+    }
+}
+
+export default LoginPage
+
+//////////////////////////////////////////////////
+
+import HomePage from "../PageObjectRepository/HomePage";
+import LoginPage from "../PageObjectRepository/LoginPage";
+
+describe("Amazon giris", () => {
+  it("amazon", () => {
+    //obje olusturmamiz lazim ki import üzerinden erisebilelim.
+
+    const homePage = new HomePage();
+    const loginPage = new LoginPage();
+
+    //url ye git
+    cy.visit("https://www.amazon.com")
+
+      //sign In butonuna tikla
+      .homePage.getSigninLink()
+      .click();
+
+      //kullanici adini girdirelim yeni acilan sayfadan
+      loginPage.getUserNameBox().type("user")
+  });
+});
