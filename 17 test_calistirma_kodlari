@@ -70,3 +70,15 @@ böylece "test dedigimizde bu alilanacak ve bu sayede:
 npm run test
 
 yazarak terminalden testi calistirabiliriz.
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Eger kod yazarken daha önce projede yazilmis olan kodlarin hatirlanmasini istersek:
+
+jsconfig.json dosyamizin icine;
+
+{
+  "include": ["./node_modules/cypress", cypress/**/*.js"]
+}
+ yazabiliriz.
