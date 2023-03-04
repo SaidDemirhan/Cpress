@@ -51,3 +51,22 @@ yazilirsa o browserda test etmis olur
 
 ***************************************************************************
 
+Ayrica; 
+
+package.json dosyasina bir script tag i acip icine komutu yaziyoruz:
+
+{
+...
+"scripts": {
+    "test": "./node_modules/.bin/cypress run",
+    "merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
+    "generate_mochawesome_report": "marge cypress/reports/output.json --reportDir ./ --inline"
+  },
+  ...
+}
+
+böylece "test dedigimizde bu alilanacak ve bu sayede:
+
+npm run test
+
+yazarak terminalden testi calistirabiliriz.
