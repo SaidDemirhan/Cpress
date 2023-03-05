@@ -1,0 +1,88 @@
+1. Masaüstünde cypress_cucumber_framework klosoru olustur
+
+2. VSCode ac ve dosyayi drag and drop yap
+
+3. Cypress i yükle
+*npm init -y  (package.json dosyasi olustu)
+*npm install --save-dev cypress
+
+4. cucumber dependencies i ekle
+*npm install --save-dev cypress-cucumber-preprocessor (node_modules dosyasi olusur)
+(https://github.com/TheBrainFamily/cypress-cucumber-example)
+
+vscode da cypress klosörü olusturmak icin (otomatik olusur)
+*npx cypress open (cpress acilir.)
+
+5. cypress/plugin/index.js icine asagidaki kodu ekle:
+
+const cucumber=require("cypress-cucumber-preprocessor").default
+module.exports=(on, config) => {
+  on("file:preprocessor", cucumber())
+}
+
++ cpress.json dosyasina:
+
+{
+  "testFiles": "**/*.feature"
+}
+
+bu eklenti .feature ile biten dosyalari tanimayi saglayacak.
+
++ package.json dosyasina:
+
+"cypress-cucumber-preprocessor":{
+  "nonGlobalStepDefinitions": true
+}  
+
+
+/////////////////////////////////////////////////////////////
+
+Artik testler olusturulmaya baslanabilir.
+integrasyon klosörünün icine=>
+deneme_testi.feature
+
+eger salatalik simgesi cikmiyorsa testlerde, araclar kismina cucumber yazilarak eklenti yüklenabilir.
+(cucumber (Gherkin) Full Support)
+Kuraraken yüklemiz yetmiyor, enabled yazisini tikli halde görmemiz sart
+    Eger yine görünmüyorsa VSCode Icons Team eklentisini de yükleyin!
+
+*integration klosörünün icine "test.js" dosyasi olusturup icine:
+
+import {Given, And, When, Then} from "cypress-cucucmber-preprocessor/steps";
+
+Given("",()=>{
+
+})
+And("",()=>{
+
+})
+When("",()=>{
+
+})
+Then("",()=>{
+
+})
+
+kodunu yapistiralim ki daha sonra yazmamizda yardimcimiz olsun.
+
+
+/////////////////////////////////////////////////////////////////
+
+deneme_test.feature sayfasina:
+
+Feature: Login Test
+  Scenario: TC01_login
+  Given url git
+  And logine tikla
+  And username ve password gir
+  And onayla butonuna tikla
+  And giris yapildigini onayla
+  
+  ***Unutmayalim ki klosör ve feature dosya ismimiz ayni olmak zorundadir.
+  deneme_test(klosör)
+    deneme_test.js(klosörün icindeki dosyalar farkli isimli olabilir)
+  deneme_test.feature
+  
+    *.feauture dosyalari ayri bir klosörün icinde de depolanabilir.
+    
+  
