@@ -65,18 +65,29 @@ Then("",()=>{
 
 kodunu yapistiralim ki daha sonra yazmamizda yardimcimiz olsun.
 
+//given, when gibi ifadelerin nerede yazilacaginin bir önemi yok IDE icin, hepsi Given de olabilir.
+
 
 /////////////////////////////////////////////////////////////////
 
 deneme_test.feature sayfasina:
 
-Feature: Login Test
+Feature: Login Test   //iki noktadan önce bosluk olursa hata verir.
   Scenario: TC01_login
   Given url git
   And logine tikla
   And username ve password gir
+  |username|password|
+  |manager|Manager1!|
   And onayla butonuna tikla
   And giris yapildigini onayla
+  And kullanici arama yapacak "<baskenler>"   //arada bosluk olmasin<>
+  
+  Examples:
+      |baskentler|
+      |ankara|
+      |paris|
+      |londra|
   
   ***Unutmayalim ki klosör ve feature dosya ismimiz ayni olmak zorundadir.
   deneme_test(klosör)
@@ -85,4 +96,29 @@ Feature: Login Test
   
     *.feauture dosyalari ayri bir klosörün icinde de depolanabilir.
     
+  //////////////////////////////////////////////////////////////
   
+deneme_test.js klosörünün icine:
+  
+Given("url git",()=>{
+  cy.visit("https://www.amazon.com")
+})
+
+.....
+
+Given("username ve password gir",(dataTable)=>{
+  cy.get("#username").type(dataTable.rawTable[1][0])
+  cy.get("#password").type(dataTable.rawTable[1][1])
+})
+
+Given("kullanici arama yapacak {string}",(baskentler)=>{
+  cy.get("#arama_butonu").type(baskentler)
+  cy.get("#ara_tusu").click()   //eger tiklamazsa click({force:true}) dene
+})
+
+//yazarak locate leri burada tanimliyoruz.
+  
+  
+/////////////////////////////////////////////////////////////////
+
+testleri calistirirken
