@@ -1,0 +1,22 @@
+1. Cypress hangi OS destekler?
+macOS, Linux, Windows
+
+2. Cypress Hangi browser lari destekler?
+safari haric neredeyse tümünü
+
+3. Cypress ta browser ile test yapmak icin hangi komut girilmelidir?
+cypress run --headed
+
+4. Cypress in avantajlari nelerdir?
+Real-time reload
+Debuggability
+Automatic waiting(4 sn)
+OpenSource tool
+Fast response time
+Active community support
+Plugin ecosystem
+
+5. Cypress in selenyum dan en belirgin farklari nelerdir?
+Cypress runner
+Browser da calisir.
+Daha hizlidir.
