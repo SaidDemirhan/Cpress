@@ -121,4 +121,13 @@ Given("kullanici arama yapacak {string}",(baskentler)=>{
   
 /////////////////////////////////////////////////////////////////
 
-testleri calistirirken
+testleri calistirirken:
+
+./node_modules/.bin/cypress-tags run -e TAGS="@....."
+
+calismasini istediklerimize ayni tag i verebiliriz.
+
+ignore etme icin:(belirtilen dosya haricindekileri calistirir.)
+
+./node_modules/.bin/cypress-tags run -e TAGS="not @....."
+
