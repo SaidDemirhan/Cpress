@@ -1,0 +1,83 @@
+describe("XHR= XML, HTTP, Request", () => {
+  //XHR; JavaScript  ile sunulmus bir API dir.
+  //Web sitesini es zamanli olarak arka planda calisan olaylari takip eder.
+
+  const requestUrl = "https://jsonplaceholder.cypress.io/comments";
+
+  //"https://example.cypress.io/commands/waiting"
+
+  it("XHR Example 1", () => {
+    cy.request(requestUrl).should((Response) => {
+      console.log(Response);
+
+      //status kodunun 200 oldugunu test edelim
+      assert.equal(Response.status, 200); //assert yöntemi 1
+
+      //status text ="OK" mi?
+      expect(Response.statusText).to.eq("OK"); //assert yöntemi 2
+    });
+  });
+
+  //npx cypress open ile cypress runner i aciyoruz ve ilgili testi calistirip browser da görüyüruz.
+
+  //browser da görünen bir sey yok ama test pozitif
+
+  //sag click yaparak incele- Console-object icinde olaylari görüyoruz.
+
+  it("XHR Example 2", () => {
+    cy.request("POST", requestUrl, {
+      userId: 501,
+      title: "Cypress cok kolay",
+      body: "JavaScript daha da kolay",
+    }).then((Response) => {
+      console.log(Response);
+
+      //status un 201 oldugunu test edelim
+      expect(Response.status).to.eq(201);
+
+      //title :cypress cok kolay mi?
+      expect(Response)
+        .property("body")
+        .to.contains({ title: "Cypress cok kolay" });
+
+      //user Id in numara olup olmadigini asert edelim
+      expect(Response.body).property("userId").to.be.a("number");
+    });
+  });
+
+  //requestbady de bu yaptiklarimiz görünüyor
+
+  const requestUrl2 = "https://example.cypress.io/commands/waiting";
+
+  it("XHR Example 3", () => {
+    cy.visit(requestUrl2);
+    //incele kismindan Network kisnina geldik
+
+    //internet sayfasindaki "get Comment" butonuna tikladik
+
+    // bu sayede bir adet response olustu
+
+    //name kismina tikladiktan sonra "Header Preview Response..."kisimlarini görebiliyoruz.
+
+    //intercept komutu network teki request ve response lara ulamamizi sagliyor.
+
+    cy.intercept("GET", "**/comments/*").as("getComment");
+    //Headers kismindaki Request URL: https://jsonplaceholder.cypress.io/comments/1
+    //bu linkin icinde gecen comments kelimesinin önünde ve arkasinda bir degisiklik olursa izle/dinle diyoruz.
+
+    //as diyerek ise bu dinledigini bu isimde kaydet diyoruz.
+    //yani degisken atiyor ve @ ile kullanilir.
+
+    cy.get(".network-btn").click();
+    //yeniden butona tiklayarak bir response göndermis olduk
+
+    cy.wait("@getComment")
+      .its("response")
+      .then((response) => {
+        console.log(response);
+
+        //status kodununun 200 oldugunu kontrol edelim
+        assert.equal(response.statusCode, 200, "Status Code Control");
+      });
+  });
+});
