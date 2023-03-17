@@ -6,7 +6,7 @@ cy.get('#myElement').should('exist');
 cy.get('#myElement').should('not.exist');
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin varlığını kontrol eder.
 
-**********************
+*********************
 
 2 .should('be.visible'): Belirtilen seçiciye sahip bir HTML öğesi görünürse başarılı 
 bir şekilde geçer.
@@ -17,7 +17,7 @@ cy.get('#myElement').should('not.be.visible');
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin görünür 
   olup olmadığını kontrol eder.
 
-**********************
+*********************
 
 3 .should('have.text', 'metin'): Belirtilen seçiciye sahip bir HTML öğesinin metni 
 belirtilen metinle eşleşirse başarılı bir şekilde geçer.
@@ -28,7 +28,7 @@ cy.get('#myElement').should('have.text', 'Merhaba Dünya!');
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin metninin "Merhaba Dünya!" 
   olup olmadığını kontrol eder.
 
-**********************
+*********************
 
 4 .should('contain', 'metin'): Belirtilen seçiciye sahip bir HTML öğesinin metni belirtilen 
 metini içeriyorsa başarılı bir şekilde geçer.
@@ -51,7 +51,7 @@ cy.get('#myElement').should('not.have.attr', 'disabled', 'disabled');
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "data-id" özniteliğinin değerinin 
   "12345" olduğunu kontrol eder.
 
-**********************
+*********************
 
 6 .should('have.class', 'className'): Belirtilen seçiciye sahip bir HTML öğesinin belirtilen
 sınıfı içeriyorsa başarılı bir şekilde geçer.
@@ -80,7 +80,7 @@ belirtilen değerle eşleşirse başarılı bir şekilde geçer.
   
   cy.get('#myInput').should('have.value', 'John Doe');
 
-**********************
+*********************
 9 .should('have.length', length): Belirtilen seçiciye sahip öğelerin sayısı belirtilen 
 uzunlukla eşleşirse başarılı bir şekilde geçer.
 
