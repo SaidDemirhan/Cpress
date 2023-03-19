@@ -10,16 +10,16 @@ describe('My First Cypress Test', () => {
       // URL'de "example" ifadesinin yer aldığını kontrol eder
       
     cy.title().should("equal", "google")
-      //sayfa title inda google kelimesinin oldugunu kontrol eder.
+      // sayfa title inda google kelimesinin oldugunu kontrol eder.
       "equal" yerine "eq" da kullanlabilir.
       
     cy.get('#navLogon > .nav-link')
-      //locator belirleme
+      // locator belirleme
       
     cy.contains("log in").click()
-      //eger sayfada bir tane log in geciyorsa onu bulur ve üzerine tiklar.
+      // eger sayfada bir tane log in geciyorsa onu bulur ve üzerine tiklar.
       
-    //username: "manager"
+    // username: "manager"
     cy.get('#UserName').type("manager") 
         //bir text kutusuna yazi yazar
     
