@@ -21,7 +21,7 @@ describe('My First Cypress Test', () => {
       
     // username: "manager"
     cy.get('#UserName').type("manager") 
-        //bir text kutusuna yazi yazar
+        // bir text kutusuna yazi yazar
     
   })
 })
