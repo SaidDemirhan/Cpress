@@ -1,0 +1,93 @@
+npm init -y
+npm install --save-dev cypress
+npx cypress open
+
+describe('My First Cypress Test', () => {
+  it('Visits the homepage', () => {
+    cy.visit('https://www.example.com') 
+  })
+})
+
+cy.visit('https://www.example.com') // URL adresine gider
+      
+cy.contains('elma') // sayfada "elma" metnini arar.
+      
+cy.url().should('include', 'example') // URL'de "example" var mi?
+      
+cy.title().should("equal", "google") //title’da google var mi?
+      "equal" yerine "eq" da kullanlabilir.
+      
+cy.get('#navLogon > .nav-link')  //locator belirleme
+      
+cy.contains("log in").click() //sayfadaki “log in”I bulur ve tiklar.
+      
+cy.get('#UserName').type("manager") //bir text kutusuna yazi yazar
+
+Assert_cesitleri
+
+1 .should('exist'): Belirtilen HTML öğesi var mi?
+cy.get('#myElement').should('exist');
+cy.get('#myElement').should('not.exist');
+
+2 .should('be.visible'): Belirtilen HTML öğesi görünür mü?
+cy.get('#myElement').should('be.visible');
+cy.get('#myElement').should('not.be.visible');
+
+3 .should('have.text', 'metin'): //metin eksiksiz ve bire bir ayni mi?
+cy.get('#myElement').should('have.text', 'Merhaba Dünya!');
+
+4 .should('contain', 'metin'): // metnin bir kismini iceriyor mu?
+cy.get('#myElement').should('contain', 'Dünya');
+cy.get('#myElement').should('include', 'Dünya');
+
+5 .should('have.attr', 'attributeName', 'attributeValue'): 
+//Belirtilen HTML öğesinin belirtilen özniteliği eslesiyor mu?
+cy.get('#myElement').should('have.attr', 'data-id', '12345');
+cy.get('#myElement').should('not.have.attr', 'disabled', 'disabled');
+
+6 .should('have.class', 'className'): 
+//Belirtilen HTML öğesinin belirtilen özelligi var mi?
+cy.get('#myElement').should('have.class', 'active');
+cy.get('#myElement').should('not.have.class', 'hidden');
+
+7 .should('have.css', 'property', 'value'): Belirtilen seçiciye sahip bir HTML öğesinin 
+belirtilen CSS özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
+
+cy.get('#myElement').should('have.css', 'color', 'red');
+cy.get('#myElement').should('not.have.css', 'background-color', 'blue');
+
+
+  //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "color" CSS özelliğinin 
+  "red" olduğunu kontrol eder.
+  
+**********************  
+8. .should('have.value', 'value'): Belirtilen seçiciye sahip bir form öğesinin değeri 
+belirtilen değerle eşleşirse başarılı bir şekilde geçer.
+  
+  cy.get('#myInput').should('have.value', 'John Doe');
+
+**********************
+9 .should('have.length', length): Belirtilen seçiciye sahip öğelerin sayısı belirtilen 
+uzunlukla eşleşirse başarılı bir şekilde geçer.
+
+  cy.get('.list-item').should('have.length', 5);
+
+**********************
+10 .should('match', pattern): Belirtilen seçiciye sahip bir öğenin yol ve özelligi, 
+belirtilen düzenli ifade örüntüsüyle eşleşirse başarılı bir şekilde geçer.
+*yani linin altinda navLogon id i + nav-item ve active class i
+  *her öellik yazilmak zorunda degil.
+
+  cy.get('#myElement').should('match', "li#navLogon.nav-item.active");
+
+**********************
+11 .should('have.descendants', selector): Belirtilen seçiciye sahip bir öğenin belirtilen
+alt öğelere sahip olması durumunda başarılı bir şekilde geçer.
+
+  cy.get('#myList').should('have.descendants', '.list-item');
+
+**********************
+12 .should('have.prop', 'propertyName', 'value'): Belirtilen seçiciye sahip bir öğenin 
+belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
+
+  cy.get('#myCheckbox').should('have.prop', 'checked', true);
