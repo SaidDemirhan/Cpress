@@ -86,7 +86,7 @@ alt öğelere sahip olması durumunda başarılı bir şekilde geçer.
 
   cy.get('#myList').should('have.descendants', '.list-item');
 
-**********************
+***********************
 12 .should('have.prop', 'propertyName', 'value'): Belirtilen seçiciye sahip bir öğenin 
 belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
 
