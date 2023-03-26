@@ -33,7 +33,7 @@ cy.get('#myElement').should('not.exist');
 cy.get('#myElement').should('be.visible');
 cy.get('#myElement').should('not.be.visible');
 
-3 .should('have.text', 'metin'): //metin eksiksiz ve bire bir ayni mi?
+3 .should('have.text', 'metin'): // metin eksiksiz ve bire bir ayni mi?
 cy.get('#myElement').should('have.text', 'Merhaba Dünya!');
 
 4 .should('contain', 'metin'): // metnin bir kismini iceriyor mu?
