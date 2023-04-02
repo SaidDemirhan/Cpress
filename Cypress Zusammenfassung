@@ -66,13 +66,13 @@ belirtilen değerle eşleşirse başarılı bir şekilde geçer.
   
   cy.get('#myInput').should('have.value', 'John Doe');
 
-**********************
+*********************
 9 .should('have.length', length): Belirtilen seçiciye sahip öğelerin sayısı belirtilen 
 uzunlukla eşleşirse başarılı bir şekilde geçer.
 
   cy.get('.list-item').should('have.length', 5);
 
-**********************
+*********************
 10 .should('match', pattern): Belirtilen seçiciye sahip bir öğenin yol ve özelligi, 
 belirtilen düzenli ifade örüntüsüyle eşleşirse başarılı bir şekilde geçer.
 *yani linin altinda navLogon id i + nav-item ve active class i
