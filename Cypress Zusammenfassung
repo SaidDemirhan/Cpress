@@ -80,7 +80,7 @@ belirtilen düzenli ifade örüntüsüyle eşleşirse başarılı bir şekilde g
 
   cy.get('#myElement').should('match', "li#navLogon.nav-item.active");
 
-**********************
+*********************
 11 .should('have.descendants', selector): Belirtilen seçiciye sahip bir öğenin belirtilen
 alt öğelere sahip olması durumunda başarılı bir şekilde geçer.
 
