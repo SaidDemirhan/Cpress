@@ -60,7 +60,7 @@ cy.get('#myElement').should('not.have.css', 'background-color', 'blue');
   //Yukarıdaki kod, id'si "myElement" olan bir HTML öğesinin "color" CSS özelliğinin 
   "red" olduğunu kontrol eder.
   
-**********************
+***********************
 8. .should('have.value', 'value'): Belirtilen seçiciye sahip bir form öğesinin değeri 
 belirtilen değerle eşleşirse başarılı bir şekilde geçer.
   
