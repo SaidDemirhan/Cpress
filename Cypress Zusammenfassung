@@ -66,7 +66,7 @@ belirtilen değerle eşleşirse başarılı bir şekilde geçer.
   
   cy.get('#myInput').should('have.value', 'John Doe');
 
-*********************
+**********************
 9 .should('have.length', length): Belirtilen seçiciye sahip öğelerin sayısı belirtilen 
 uzunlukla eşleşirse başarılı bir şekilde geçer.
 
