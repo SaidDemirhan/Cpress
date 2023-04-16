@@ -92,8 +92,3 @@ belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şeki
 
   cy.get('#myCheckbox').should('have.prop', 'checked', true);
   
-***********************
-12 .should('have.prop', 'propertyName', 'value'): Belirtilen seçiciye sahip bir öğenin 
-belirtilen özelliğinin belirtilen değeriyle eşleşirse başarılı bir şekilde geçer.
-
-  cy.get('#myCheckbox').should('have.prop', 'checked', true);
